@@ -1,0 +1,288 @@
+@import "tailwindcss";
+
+/* ============================================
+   UDAAN Design System — Tailwind CSS v4
+   Premium Aviation Intelligence Aesthetic
+   ============================================ */
+
+@theme {
+  /* — Background & Surface Palette — */
+  --color-udaan-bg: #04060e;
+  --color-udaan-surface: #0a0f1e;
+  --color-udaan-surface-light: #111827;
+  --color-udaan-panel: #0f172a;
+  --color-udaan-card: rgba(15, 23, 42, 0.7);
+
+  /* — Border — */
+  --color-udaan-border: rgba(51, 65, 85, 0.5);
+  --color-udaan-border-light: rgba(71, 85, 105, 0.3);
+
+  /* — Accent — */
+  --color-udaan-cyan: #06b6d4;
+  --color-udaan-cyan-dim: rgba(6, 182, 212, 0.15);
+  --color-udaan-blue: #3b82f6;
+  --color-udaan-red: #ef4444;
+  --color-udaan-red-dim: rgba(239, 68, 68, 0.15);
+
+  /* — Text — */
+  --color-udaan-text: #e2e8f0;
+  --color-udaan-text-muted: #94a3b8;
+  --color-udaan-text-dim: #64748b;
+
+  /* — Status — */
+  --color-udaan-positive: #10b981;
+  --color-udaan-negative: #ef4444;
+  --color-udaan-warning: #f59e0b;
+
+  /* — Font — */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-udaan-bg);
+  color: var(--color-udaan-text);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-udaan-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-udaan-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-udaan-text-dim);
+}
+
+/* ============================================
+   Aviation Typography
+   ============================================ */
+
+.font-mono-aviation {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.text-airport-code {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   Glass Card Styles
+   ============================================ */
+
+.glass-card {
+  background: var(--color-udaan-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-udaan-border);
+  border-radius: 0.75rem;
+}
+
+.glass-card-hover {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(6, 182, 212, 0.3);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.05);
+}
+
+/* ============================================
+   Flight Path Animation
+   ============================================ */
+
+@keyframes flightPathDraw {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes planeMove {
+  0% {
+    transform: translateX(-100%) translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(400%) translateY(-60px);
+    opacity: 0;
+  }
+}
+
+.animate-flight-path {
+  animation: flightPathDraw 3s ease-in-out forwards;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-udaan-surface) 25%,
+    var(--color-udaan-surface-light) 50%,
+    var(--color-udaan-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.animate-plane-move {
+  animation: planeMove 12s linear infinite;
+}
+
+/* ============================================
+   Skeleton Loading
+   ============================================ */
+
+.skeleton {
+  border-radius: 0.5rem;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 23, 42, 0.8) 25%,
+    rgba(30, 41, 59, 0.8) 50%,
+    rgba(15, 23, 42, 0.8) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ============================================
+   Runway Separator
+   ============================================ */
+
+.runway-separator {
+  border: none;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-udaan-border) 0px,
+    var(--color-udaan-border) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
+
+/* ============================================
+   Star Field Background (subtle)
+   ============================================ */
+
+.star-field {
+  position: relative;
+}
+
+.star-field::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.15) 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.1) 0%, transparent 100%),
+    radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,0.12) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 40%, rgba(255,255,255,0.08) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 80%, rgba(255,255,255,0.1) 0%, transparent 100%),
+    radial-gradient(1px 1px at 15% 85%, rgba(255,255,255,0.06) 0%, transparent 100%),
+    radial-gradient(1px 1px at 55% 75%, rgba(255,255,255,0.09) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 15%, rgba(255,255,255,0.07) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================
+   Page Transition
+   ============================================ */
+
+.page-enter {
+  animation: fadeInUp 0.35s ease-out;
+}
+
+/* ============================================
+   Focus Styles (Accessibility)
+   ============================================ */
+
+:focus-visible {
+  outline: 2px solid var(--color-udaan-cyan);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ============================================
+   Recharts Overrides
+   ============================================ */
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(51, 65, 85, 0.3);
+}
+
+.recharts-tooltip-cursor {
+  stroke: var(--color-udaan-cyan);
+  stroke-opacity: 0.3;
+}
